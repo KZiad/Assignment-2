@@ -16,6 +16,7 @@ between words.
 :D
 */
 
+string getInput();
 
 int main()
 {
@@ -74,9 +75,8 @@ int main()
         case 1:
         {
             // Input Handling
-            string input;
             cout << "Plain text: ";
-            getline(cin >> ws, input);
+            string input = getInput();
 
             // Conversion from text -> morse code
             cout << "Morse text: ";
@@ -91,7 +91,7 @@ int main()
                 {
                     cout << "  ";
                 }
-                
+
                 else
                 {
                     // Print morse letter
@@ -117,9 +117,10 @@ int main()
             for (auto const &p : morse_code) morse_code_rev[p.second] = p.first;
 
             // Get input
-            string input;
             cout << "Morse code: ";
-            getline(cin >> ws, input);
+            string input = getInput();
+            
+            
 
             // string to store dot and dash combinations
             string morseLetter;
@@ -165,4 +166,10 @@ int main()
         default:
         break;
     }
+}
+
+string getInput(){
+    string input;
+    getline(cin >> ws, input);
+    return input;
 }
