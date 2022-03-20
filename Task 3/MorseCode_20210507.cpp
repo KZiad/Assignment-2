@@ -56,15 +56,27 @@ int main()
         {'7', "--..."},
         {'8', "---.."},
         {'9', "----."},
-        {'0', "-----"}
+        {'0', "-----"},
+        {'.', ".-.-.-"},
+        {',', "--..--"},
+        {'?', "..--.."},
+        {'!', "-.-.--"}
     };
-    // Choose encryption or decryption
-    int action = 0;
-    cout << "1. Encrypt\n2. Decrypt\n";
-    while (action != 1 && action != 2)
+    int action;
+    while (action != 3){
+    // Choose encryption or decryption or quit
+    action = 0;
+    
+    while (action != 1 && action != 2 && action != 3)
     {
+        cout << "1. Encrypt\n2. Decrypt\n3. Quit\n";
         cin >> action;
+        while(cin.fail()){
+            cin.clear();
+            cin.ignore();
+        }
     }
+
 
     switch (action)
     {
@@ -100,8 +112,7 @@ int main()
             }
             cout << endl;
 
-            // to add "Press any button to continue"
-            system("pause");
+            
         }
         break;
 
@@ -125,6 +136,7 @@ int main()
             // string to store dot and dash combinations
             string morseLetter;
 
+            cout << "Plain text: ";
             // Loop to decipher morse code
             while (input != ""){
 
@@ -155,17 +167,14 @@ int main()
 
             cout << morse_code_rev[morseLetter];
             cout << endl;
-
-            // to add "Press any button to continue"
-            system("pause");
-
-
         }
         break;
 
         default:
         break;
-    }
+    }}
+    // to add "Press any button to continue"
+    system("pause");
 }
 
 string getInput(){
