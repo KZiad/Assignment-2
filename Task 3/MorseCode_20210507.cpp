@@ -1,20 +1,17 @@
+// FCAI – Programming 1 – 2022 - Assignment 2
+// Program Name: MorseCode_20210507.cpp
+// Program Description: Program to encrypt and decrypt Morse code
+// Last Modification Date: 20/03/2022
+// Author and ID and Group: Zeyad Mohamed Maher Karsoun - 20210507 - Group A
+// Teaching Assistant: ???
+// Purpose:
+// This program will encrypt and decrypt Morse code
+
+
+
 #include <iostream>
 #include <map>
 using namespace std;
-/*
-###############################################
-##########  MORSE CODE TRANSLATOR  ############
-# By: Zeyad Mohamed Maher Karsoun ID: 20210507
-###############################################
-###############################################
-
-To use it, you first choose 1 (encrypt) or 2 (decrypt).
-After making a choice, enter the text you want to encrypt or decrypt while making sure
-to follow this format when converting from morse code: 1 space between letter and 3
-between words.
-
-:D
-*/
 
 string getInput();
 

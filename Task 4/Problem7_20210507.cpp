@@ -1,3 +1,13 @@
+// FCAI – Programming 1 – 2022 - Assignment 2
+// Program Name: Problem7_20210507.cpp
+// Program Description: Program to convert roman numerals to an integer
+// Last Modification Date: 20/03/2022
+// Author and ID and Group: Zeyad Mohamed Maher Karsoun - 20210507 - Group A
+// Teaching Assistant: ???
+// Purpose:
+// This program will convert roman numerals to an integer
+
+
 #include <iostream>
 #include <map>
 using namespace std;
