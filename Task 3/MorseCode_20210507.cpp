@@ -10,7 +10,7 @@ using namespace std;
 
 To use it, you first choose 1 (encrypt) or 2 (decrypt).
 After making a choice, enter the text you want to encrypt or decrypt while making sure
-to follow this format when converting from morse code: 1 space between letter and 3 
+to follow this format when converting from morse code: 1 space between letter and 3
 between words.
 
 :D
@@ -60,26 +60,26 @@ int main()
         {'.', ".-.-.-"},
         {',', "--..--"},
         {'?', "..--.."},
-        {'!', "-.-.--"}
-    };
+        {'!', "-.-.--"}};
     int action;
-    while (action != 3){
-    // Choose encryption or decryption or quit
-    action = 0;
-    
-    while (action != 1 && action != 2 && action != 3)
+    while (action != 3)
     {
-        cout << "1. Encrypt\n2. Decrypt\n3. Quit\n";
-        cin >> action;
-        while(cin.fail()){
-            cin.clear();
-            cin.ignore();
+        // Choose encryption or decryption or quit
+        action = 0;
+
+        while (action != 1 && action != 2 && action != 3)
+        {
+            cout << "1. Encrypt\n2. Decrypt\n3. Quit\n";
+            cin >> action;
+            while (cin.fail())
+            {
+                cin.clear();
+                cin.ignore();
+            }
         }
-    }
 
-
-    switch (action)
-    {
+        switch (action)
+        {
         /*
         Encryption
         ############################
@@ -111,8 +111,6 @@ int main()
                 }
             }
             cout << endl;
-
-            
         }
         break;
 
@@ -125,43 +123,47 @@ int main()
         {
             // Reverse morse code map for decryption
             map<string, char> morse_code_rev;
-            for (auto const &p : morse_code) morse_code_rev[p.second] = p.first;
+            for (auto const &p : morse_code)
+                morse_code_rev[p.second] = p.first;
 
             // Get input
             cout << "Morse code: ";
             string input = getInput();
-            
-            
 
             // string to store dot and dash combinations
             string morseLetter;
 
             cout << "Plain text: ";
             // Loop to decipher morse code
-            while (input != ""){
+            while (input != "")
+            {
 
                 // a space indicated the end of a word or letter
-                if (input[0] == ' '){
+                if (input[0] == ' ')
+                {
 
                     // prints letter and empties string letter
                     cout << morse_code_rev[morseLetter];
                     morseLetter = "";
 
                     // checks if end of word
-                    if (input[1] == ' ' && input[2] == ' '){
-                        input.erase(0,3);
+                    if (input[1] == ' ' && input[2] == ' ')
+                    {
+                        input.erase(0, 3);
                         cout << ' ';
                     }
                     // removes space
-                    else {
-                        input.erase(0,1);
+                    else
+                    {
+                        input.erase(0, 1);
                     }
                 }
 
                 // Adds the dot or dash to string word
-                else if (input[0] == '.' || input[0] == '-'){
+                else if (input[0] == '.' || input[0] == '-')
+                {
                     morseLetter += input[0];
-                    input.erase(0,1);
+                    input.erase(0, 1);
                 }
             }
 
@@ -172,12 +174,14 @@ int main()
 
         default:
         break;
-    }}
+        }
+    }
     // to add "Press any button to continue"
     system("pause");
 }
 
-string getInput(){
+string getInput()
+{
     string input;
     getline(cin >> ws, input);
     return input;

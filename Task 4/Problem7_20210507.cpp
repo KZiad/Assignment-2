@@ -2,14 +2,16 @@
 #include <map>
 using namespace std;
 
-map<char, int> romanNumerals{
+map<char, int> romanNumerals
+{
     {'I', 1},
     {'V', 5},
     {'X', 10},
     {'L', 50},
     {'C', 100},
     {'D', 500},
-    {'M', 1000}};
+    {'M', 1000}
+};
 
 int main()
 {
@@ -24,7 +26,7 @@ int main()
     for (int i = 0; i < input.length(); i++)
     {
         input[i] = toupper(input[i]);
-        
+
         // if the roman numeral is smaller than the one after it,
         // then it will be considered negative (like IV is -1 + 5)
         // otherwise it's positive
@@ -34,7 +36,7 @@ int main()
         }
         else
         {
-            sum += romanNumerals[input[i]];
+            sum += romanNumerals[input[i]];S
         }
     }
     // Output
