@@ -30,9 +30,9 @@ int main() {
 
 
     cout << "size: " << capt->size() << endl;
+    
     for(int i = 0; i < capt->size(); ++i)
     {
-        cout << "the " << i + 1 << "th match" << ": " << (*capt)[i] << endl;
         captures[i] = (*capt)[i];
     }
     ++capt;
