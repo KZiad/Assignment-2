@@ -30,13 +30,12 @@ int main() {
 
 
     cout << "size: " << capt->size() << endl;
-    
+
     for(int i = 0; i < capt->size(); ++i)
     {
         captures[i] = (*capt)[i];
     }
     ++capt;
-    
     complex <double> num1(stod(captures[1]), stod(captures[2]));
     complex <double> num2(stod(captures[4]), stod(captures[5]));
     char opr = captures[3][0];
