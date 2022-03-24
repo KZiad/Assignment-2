@@ -18,7 +18,7 @@ int main(){
         cout << "5. Simple Substitution (TODO)" << endl;
         cout << "6. Polybius Square" << endl;
         cout << "7. Morse Code(TODO)" << endl;
-        cout << "8. XOR (TODO)" << endl;
+        cout << "8. XOR" << endl;
         cout << "9. Railfence (TODO)" << endl;
         cout << "10. Quit" << endl;
         cin >> option;
@@ -76,18 +76,45 @@ string xor_cipher(string input, int opt){
         cin >> key;
     }
     string result,result_hexa;
-    for (auto chr : input){
-        result += chr ^ key;
-        char* temp;
-        itoa(chr ^ key,temp, 16);
-        string tempstr(temp);
-        if (tempstr.length() == 1){
-            result_hexa += "0";
-        }
-        result_hexa += temp;
+    switch(opt){
+        case 1:
+            // cleaning input and taking just letters
+            for(int i = 0; i < input.length(); i++){
+                if(!isalpha(input[i])){
+                    input.erase(i,1);
+                    i--;
+                }
+            }
+            // capitalizing input
+            for(int i = 0; i < input.length(); i++){
+                input[i] = toupper(input[i]);
+            }
+            for (auto chr : input){
+                result += chr ^ key;
+                char* temp;
+                itoa(chr ^ key,temp, 16);
+                string tempstr(temp);
+                if (tempstr.length() == 1){
+                    result_hexa += "0";
+                }
+                result_hexa += temp;
+            }
+            cout << "Encrypted text: " << result << " (Hexa: " << result_hexa << ")" << endl;
+            return result;
+            break;
+        case 2:
+            int i = 0;
+            for (int i = 0; i < input.length(); i += 2){
+                stringstream ss;
+                ss << hex << input[i] << input[i+1];
+                int temp;
+                ss >> temp;
+                result += temp ^ key;
+
+            }
+            cout << "Decrypted text: " << result << endl;
+            break;
     }
-    cout << "Encrypted text: " << result << " (Hexa: " << result_hexa << ")" << endl;
-    return result;
 }
 string polybius_square(string input, int opt){
     map<char, string> lets{
