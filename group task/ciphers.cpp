@@ -4,7 +4,7 @@
 using namespace std;
 #include <sstream>
 string polybius_square(string input, int opt);
-string xor_cipher(string input, int opt);
+void xor_cipher(string input, int opt);
 
 int main(){
     int option = 0;
@@ -65,7 +65,7 @@ int main(){
     
     
 }
-string xor_cipher(string input, int opt){
+void xor_cipher(string input, int opt){
     char key;
     cout << "Please enter the key: ";
     cin >> key;
@@ -100,7 +100,6 @@ string xor_cipher(string input, int opt){
                 result_hexa += temp;
             }
             cout << "Encrypted text: " << result << " (Hexa: " << result_hexa << ")" << endl;
-            return result;
             break;
         case 2:
             int i = 0;
