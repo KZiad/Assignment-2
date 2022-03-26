@@ -46,7 +46,7 @@ int main()
         }
         else
         {
-            sum += romanNumerals[input[i]];S
+            sum += romanNumerals[input[i]];
         }
     }
     // Output

@@ -5,7 +5,8 @@ using namespace std;
 #include <sstream>
 string polybius_square(string input, int opt);
 void xor_cipher(string input, int opt);
-
+void affine_cipher(string input, int opt);
+string extractAlpha(string text);
 int main(){
     int option = 0;
     while (option != 10){
@@ -46,6 +47,9 @@ int main(){
         getline(cin >> ws, input);
 
         switch(option){
+            case 0:
+                affine_cipher(input, opt);
+            break;
             case 6:
                 cout << polybius_square(input, opt) << endl;
                 system("pause");
@@ -79,12 +83,7 @@ void xor_cipher(string input, int opt){
     switch(opt){
         case 1:
             // cleaning input and taking just letters
-            for(int i = 0; i < input.length(); i++){
-                if(!isalpha(input[i])){
-                    input.erase(i,1);
-                    i--;
-                }
-            }
+            input = extractAlpha(input);
             // capitalizing input
             for(int i = 0; i < input.length(); i++){
                 input[i] = toupper(input[i]);
@@ -114,6 +113,71 @@ void xor_cipher(string input, int opt){
             cout << "Decrypted text: " << result << endl;
             break;
     }
+}
+void affine_cipher(string input, int opt){
+    input = extractAlpha(input);
+    // array of alphabets
+    string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    int a,b, c;
+    cout << "Enter a: ";
+    cin >> a;
+    cout << "Enter b: ";
+    cin >> b;
+    cout << "Enter c: ";
+    cin >> c;
+
+    while (((a * c) % 26) != 1){
+        cout << "Enter a: ";
+        cin >> a;
+        cout << "Enter b: ";
+        cin >> b;
+        cout << "Enter c: ";
+        cin >> c;
+    }
+    switch(opt){
+        // Encryption
+        case 1:
+            
+            for (auto chr : input){
+                int ind = alphabet.find(toupper(chr));
+                int enclet = (a*ind + b);
+                if (enclet > 25){
+                     enclet %= 26;
+                }
+                
+                cout << alphabet[enclet];
+            }
+        break;
+        // decryption
+        case 2:
+            for (auto chr : input){
+                int ind = alphabet.find(toupper(chr));
+                int enclet = (c*(ind - b));
+                if (enclet > 25){
+                     enclet %= 26;
+                } 
+                while (enclet < 0){
+                    enclet += 26;
+                }
+                // else if (enclet < 0){
+                //     enclet = -enclet % 26;
+                // }
+                
+                cout << alphabet[enclet];
+            }
+        break;
+    }
+    cout << endl;
+    
+}
+string extractAlpha(string text){
+    for(int i = 0; i < text.length(); i++){
+        if(!isalpha(text[i])){
+            text.erase(i,1);
+            i--;
+        }
+    }
+    return text;
 }
 string polybius_square(string input, int opt){
     map<char, string> lets{
