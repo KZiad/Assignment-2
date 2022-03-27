@@ -3,6 +3,7 @@
 #include <string>
 using namespace std;
 #include <sstream>
+void railfence_cipher(string input, int opt);
 string polybius_square(string input, int opt);
 void xor_cipher(string input, int opt);
 void affine_cipher(string input, int opt);
@@ -60,9 +61,9 @@ int main(){
             case 8:
                xor_cipher(input, opt);
             break;
-            //case 9:
-            //    railfence_cipher(input, opt);
-            //break;
+            case 9:
+               railfence_cipher(input, opt);
+            break;
 
         }
     }
@@ -178,6 +179,49 @@ string extractAlpha(string text){
         }
     }
     return text;
+}
+void railfence_cipher(string input, int opt){
+    int key = 3;
+    input = extractAlpha(input);
+    int rows = (input.length() / key) + (input.length() % key != 0);
+    char inparr[rows][key];
+    int letterCount = 0;
+    switch (opt)
+    {
+    case 1:
+            for (int row = 0; row < rows; ++row){
+                for (int col = 0; col < key; ++col){
+                    inparr[row][col] = input[letterCount];
+                    letterCount++;
+                }
+            }
+            for (int col = 0; col < key; ++col){
+
+                for (int row = 0; row < rows; ++row){
+                    cout << inparr[row][col];
+                }
+            }
+    break;
+    
+    case 2:
+            for (int col = 0; col < key; ++col){
+                for (int row = 0; row < rows; ++row){
+                    inparr[row][col] = input[letterCount];
+                    letterCount++;
+                }
+            }
+            for (int row = 0; row < rows; ++row){
+
+                for (int col = 0; col < key; ++col){
+                    cout << inparr[row][col];
+                }
+            }
+
+        break;
+         
+    }
+    cout << endl;
+    
 }
 string polybius_square(string input, int opt){
     map<char, string> lets{
