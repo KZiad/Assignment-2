@@ -28,9 +28,6 @@ int main() {
     
     string captures[4];
 
-
-    cout << "size: " << capt->size() << endl;
-
     for(int i = 0; i < capt->size(); ++i)
     {
         captures[i] = (*capt)[i];
@@ -57,6 +54,6 @@ int main() {
             break;
     }
     char opr2 = result.imag() < 0 ? : '+';
-    cout << result.real()<< opr2 << result.imag() << "i" << endl;
+    cout << "Result: (" << result.real() << opr2 << result.imag() << "i)" << endl;
     system("pause");
 }
